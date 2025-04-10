@@ -7,7 +7,7 @@ import Clients from '../components/Clients';
 import Testimonial from '../components/Testimonial';
 import CTA from '../components/CTA';
 import Footer from '../components/Footer';
-
+import ContactUs from '../components/Contact'
 const Home = () => {
   return (
     <div className="min-h-screen bg-gray-50">
@@ -18,6 +18,7 @@ const Home = () => {
       <Clients />
       <Testimonial />
       <CTA />
+      <ContactUs />
       <Footer />
     </div>
   );

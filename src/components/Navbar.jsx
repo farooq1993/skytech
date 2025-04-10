@@ -1,10 +1,12 @@
+'use client';
+
 import React, { useState } from 'react';
-import { ChevronDownIcon } from '@heroicons/react/20/solid';
+import { ChevronDownIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
+import { Link } from "react-router-dom";
 import logo from '../assets/skytech.jpeg';
 
 const Navbar = () => {
-  const [engServicesOpen, setEngServicesOpen] = useState(false);
-  const [itServicesOpen, setItServicesOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const engineeringServices = [
     { name: "Acoustic Engineering", href: "#acoustic" },
@@ -19,87 +21,112 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-white shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex items-center">
-            <img 
-              src={logo} 
-              alt="Sky Tech Technology Logo"
-              className="w-[180px] h-auto"
-              style={{ minWidth: '120px' }} 
-            />
+    <nav className="bg-blue-600 fixed top-0 left-0 w-full shadow-md z-50">
+      <div className="max-w-7xl mx-auto px-6 sm:px-4 lg:px-6">
+        <div className="flex justify-between h-16 items-center">
+          <div className="flex-shrink-0">
+            <img src={logo} alt="Logo" className="w-[150px] h-auto" />
           </div>
-          
-          <div className="hidden md:flex items-center space-x-8">
-            {/* Engineering Services Dropdown */}
-            <div className="relative">
-              <button 
-                onClick={() => {
-                  setEngServicesOpen(!engServicesOpen);
-                  setItServicesOpen(false);
-                }}
-                className="flex items-center text-gray-700 hover:text-blue-600"
-              >
-                Engineering Services
-                <ChevronDownIcon className={`ml-1 h-5 w-5 transition-transform ${engServicesOpen ? 'rotate-180' : ''}`} />
+
+          {/* Desktop menu */}
+          <div className="hidden md:flex items-center space-x-8 font-medium uppercase tracking-wider text-sm">
+            {/* Engineering Services */}
+            <div className="relative group">
+              <button className="flex items-center text-white hover:text-blue-200 transition-colors">
+                ENGINEERING SERVICES
+                <ChevronDownIcon className="ml-1 h-5 w-5" />
               </button>
-              
-              {engServicesOpen && (
-                <div className="absolute z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5">
-                  <div className="py-1">
-                    {engineeringServices.map((service) => (
-                      <a
-                        key={service.href}
-                        href={service.href}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      >
-                        {service.name}
-                      </a>
-                    ))}
-                  </div>
+              <div className="absolute left-0 top-full bg-white shadow-lg mt-2 w-56 z-20 rounded-md ring-1 ring-black ring-opacity-5 hidden group-hover:block">
+                <div className="py-1">
+                  {engineeringServices.map((service) => (
+                    <a
+                      key={service.href}
+                      href={service.href}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-100 uppercase"
+                    >
+                      {service.name}
+                    </a>
+                  ))}
                 </div>
-              )}
+              </div>
             </div>
 
-            {/* IT Services Dropdown */}
-            <div className="relative">
-              <button 
-                onClick={() => {
-                  setItServicesOpen(!itServicesOpen);
-                  setEngServicesOpen(false);
-                }}
-                className="flex items-center text-gray-700 hover:text-blue-600"
-              >
+
+            {/* IT Services */}
+            <div className="relative group">
+              <button className="flex items-center text-white hover:text-blue-200 transition-colors">
                 IT Services
-                <ChevronDownIcon className={`ml-1 h-5 w-5 transition-transform ${itServicesOpen ? 'rotate-180' : ''}`} />
+                <ChevronDownIcon className="ml-1 h-5 w-5" />
               </button>
-              
-              {itServicesOpen && (
-                <div className="absolute z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5">
-                  <div className="py-1">
-                    {itServices.map((service) => (
-                      <a
-                        key={service.href}
-                        href={service.href}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      >
-                        {service.name}
-                      </a>
-                    ))}
-                  </div>
+              <div className="absolute left-0 top-full bg-white shadow-lg mt-2 w-56 z-20 rounded-md ring-1 ring-black ring-opacity-5 hidden group-hover:block">
+                <div className="py-1">
+                  {engineeringServices.map((service) => (
+                    <a
+                      key={service.href}
+                      href={service.href}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-100 uppercase"
+                    >
+                      {service.name}
+                    </a>
+                  ))}
                 </div>
-              )}
+              </div>
             </div>
 
-            <a href="#about" className="text-gray-700 hover:text-blue-600">About Us</a>
-            <a href="#clients" className="text-gray-700 hover:text-blue-600">Clients</a>
-            <a href="#contact" className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">
+
+            <a href="#about" className="text-white hover:text-blue-600 transition-colors duration-200">
+              About Us
+            </a>
+            <a href="#clients" className="text-white hover:text-blue-600 transition-colors duration-200">
+              Clients
+            </a>
+            <a
+              href="#contact"
+              className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors duration-200 uppercase"
+            >
               Contact Us
             </a>
           </div>
+
+          {/* Mobile Hamburger */}
+          <div className="md:hidden flex items-center">
+            <button onClick={() => setMobileOpen(!mobileOpen)}>
+              {mobileOpen ? (
+                <XMarkIcon className="h-6 w-6 text-gray-700" />
+              ) : (
+                <Bars3Icon className="h-6 w-6 text-gray-700" />
+              )}
+            </button>
+          </div>
         </div>
       </div>
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div className="md:hidden px-4 pt-2 pb-4 space-y-3 text-sm font-medium uppercase">
+          <div>
+            <p className="text-gray-600">Engineering Services</p>
+            {engineeringServices.map((item) => (
+              <a key={item.href} href={item.href} className="block px-2 py-1 text-gray-700 hover:text-blue-600">
+                {item.name}
+              </a>
+            ))}
+          </div>
+          <div>
+            <p className="text-gray-600">IT Services</p>
+            {itServices.map((item) => (
+              <a key={item.href} href={item.href} className="block px-2 py-1 text-gray-700 hover:text-blue-600">
+                {item.name}
+              </a>
+            ))}
+          </div>
+          <a href="#about" className="block text-gray-700 hover:text-blue-600">About Us</a>
+          <a href="#clients" className="block text-gray-700 hover:text-blue-600">Clients</a>
+          <a href="#contact" className="block bg-blue-600 text-white text-center px-4 py-2 rounded-md hover:bg-blue-700">
+            Contact Us
+          </a>
+        </div>
+      )}
     </nav>
   );
 };

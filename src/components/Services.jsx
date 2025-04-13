@@ -15,7 +15,7 @@ const Services = () => {
       description: "Comprehensive mechanical, electrical, and plumbing designs",
       details: "Our MEP solutions integrate sustainable technologies with efficient design to optimize building performance and reduce operational costs.",
       icon: "⚙️",
-      image: "https://images.unsplash.com/photo-1581093057305-3fe6ab6c1c80?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      image: "https://emiworld.org/sites/default/files/styles/wlarge/public/images/mep.jpg?itok=lpqlQYaX",
       category: "engineering"
     },
     {

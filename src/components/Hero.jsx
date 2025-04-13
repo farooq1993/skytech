@@ -52,14 +52,14 @@ const Hero = () => {
               <img
                 src={img.src}
                 alt={img.alt}
-                className="w-full h-screen object-cover opacity-40"
+                className="w-full h-screen object-cover"
               />
 
               {/* First Image Text */}
               {index === 0 && (
                 <div className="absolute inset-0 flex flex-col items-center justify-center px-4 z-20">
                   {/* ... (your first image content) ... */}
-                  <h2 className="text-blue-800 text-3xl md:text-4xl lg:text-5xl font-semibold text-center drop-shadow-lg">
+                  <h2 className="text-white-800 text-3xl md:text-4xl lg:text-5xl font-semibold text-center drop-shadow-lg">
                   Dubai skyline with futuristic technology overlay - SkyTech LLC Engineering & IT
                   </h2>
                 </div>
@@ -68,7 +68,7 @@ const Hero = () => {
               {/* Second Image Text */}
               {index === 1 && (
                 <div className="absolute inset-0 flex items-center justify-center px-4 z-20">
-                  <h2 className="text-blue-800 text-3xl md:text-4xl lg:text-5xl font-semibold text-center drop-shadow-lg">
+                  <h2 className="text-white-800 text-3xl md:text-4xl lg:text-5xl font-semibold text-center drop-shadow-lg">
                     Elegant acoustic solutions created to lower noise and echoes in indoor areas.
                   </h2>
                 </div>
@@ -77,7 +77,7 @@ const Hero = () => {
               {/* Third Image Text */}
               {index === 2 && (
                <div className="absolute inset-0 flex items-center justify-center px-4 z-20">
-               <h2 className="text-blue-800 text-3xl md:text-4xl lg:text-5xl font-semibold text-center drop-shadow-lg">
+               <h2 className="text-white-800 text-3xl md:text-4xl lg:text-5xl font-semibold text-center">
                  Empowering businesses with secure, scalable, and smart IT solutions in the UAE.
                </h2>
              </div>
@@ -122,12 +122,12 @@ const Hero = () => {
           <path
             d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28..."
             className="fill-current text-bule"
-            opacity=".25"
+            opacity=""
           ></path>
           <path
             d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05..."
             className="fill-current text-white"
-            opacity=".5"
+            opacity=""
           ></path>
           <path
             d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57..."

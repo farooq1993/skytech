@@ -86,9 +86,6 @@ const Navbar = () => {
             >
               Contact Us
             </a>
-            <span className="text-white font-semibold ml-4">
-              <a href="tel:+971529158949" className="hover:underline">+971 52 915 8949</a>
-            </span>
           </div>
 
           {/* Mobile Hamburger */}

@@ -15,6 +15,7 @@ const Clients = () => {
     { name: "CRCC", image: "/images/clients/crcc.jpg" },
     { name: "MASS TECH", image: "/images/clients/mass_tech.png" },
     { name: "CARE 4", image: "/images/clients/care4.png" },
+    { name: "BURUJ AL YARMUKH", image: "/images/clients/bayi.jpg" },
   ];
 
   return (

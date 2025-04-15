@@ -9,6 +9,12 @@ const Clients = () => {
     { name: "Dubai Airports", image: "/images/clients/dubai_airports.jpg" },
     { name: "Future Gulf", image: "/images/clients/future_gulf.jpg" },
     { name: "SEAC", image: "/images/clients/seac.png" },
+    { name: "INNOFIT VISION", image: "/images/clients/innofit_vision.png" },
+    { name: "METAL", image: "/images/clients/metal.png" },
+    { name: "BILT", image: "/images/clients/bilt.jpg" },
+    { name: "CRCC", image: "/images/clients/crcc.jpg" },
+    { name: "MASS TECH", image: "/images/clients/mass_tech.png" },
+    { name: "CARE 4", image: "/images/clients/care4.png" },
   ];
 
   return (
@@ -31,8 +37,9 @@ const Clients = () => {
             768: { slidesPerView: 3 },
             1024: { slidesPerView: 4 },
           }}
-          loop
+          loop={clientLogos.length > 4}
         >
+
           {clientLogos.map((client, index) => (
             <SwiperSlide key={index}>
               <div className="flex items-center justify-center p-4 bg-gray-50 rounded-lg h-24">

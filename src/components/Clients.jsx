@@ -1,7 +1,15 @@
 import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+import 'swiper/css';
 
 const Clients = () => {
-  const clientLogos = ["Company A", "Company B", "Company C", "Company D"];
+  const clientLogos = [
+    { name: "ABU", image: "/images/clients/abu.jpg" },
+    { name: "Dubai Airports", image: "/images/clients/dubai_airports.jpg" },
+    { name: "Future Gulf", image: "/images/clients/future_gulf.jpg" },
+    { name: "SEAC", image: "/images/clients/seac.png" },
+  ];
 
   return (
     <section id="clients" className="py-20 bg-white">
@@ -12,14 +20,31 @@ const Clients = () => {
             We've helped businesses across various sectors achieve their technology goals
           </p>
         </div>
-        
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+
+        <Swiper
+          modules={[Autoplay]}
+          spaceBetween={30}
+          slidesPerView={2}
+          autoplay={{ delay: 2500, disableOnInteraction: false }}
+          breakpoints={{
+            640: { slidesPerView: 2 },
+            768: { slidesPerView: 3 },
+            1024: { slidesPerView: 4 },
+          }}
+          loop
+        >
           {clientLogos.map((client, index) => (
-            <div key={index} className="flex items-center justify-center p-4 bg-gray-50 rounded-lg">
-              <span className="text-xl font-semibold text-gray-700">{client}</span>
-            </div>
+            <SwiperSlide key={index}>
+              <div className="flex items-center justify-center p-4 bg-gray-50 rounded-lg h-24">
+                <img
+                  src={client.image}
+                  alt={client.name}
+                  className="h-full object-contain"
+                />
+              </div>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       </div>
     </section>
   );

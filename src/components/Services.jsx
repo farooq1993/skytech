@@ -23,7 +23,7 @@ const Services = () => {
       description: "Robust structural solutions for all construction needs",
       details: "From skyscrapers to residential buildings, our structural designs combine safety, innovation, and cost-effectiveness.",
       icon: "🏗️",
-      image: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      image: "https://kimkesti.com/wp-content/uploads/2022/03/what-do-structural-engineers-do-kimkesti.jpg",
       category: "engineering"
     }
   ];

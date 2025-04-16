@@ -52,7 +52,7 @@ const Hero = () => {
               <img
                 src={img.src}
                 alt={img.alt}
-                className="w-full h-screen object-cover"
+                className="w-full h-[85vh] object-cover"
               />
 
               {/* First Image Text */}

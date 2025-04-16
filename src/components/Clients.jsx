@@ -2,6 +2,7 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
+import '../index.css';
 
 const Clients = () => {
   const clientLogos = [
@@ -43,13 +44,13 @@ const Clients = () => {
 
           {clientLogos.map((client, index) => (
             <SwiperSlide key={index}>
-              <div className="flex items-center justify-center p-4 bg-gray-50 rounded-lg h-24">
+              <figure className="swiper-slide-inner">
                 <img
                   src={client.image}
                   alt={client.name}
-                  className="h-full object-contain"
+                  className="swiper-slide-image"
                 />
-              </div>
+              </figure>
             </SwiperSlide>
           ))}
         </Swiper>

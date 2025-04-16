@@ -6,3 +6,21 @@ html {
     scroll-behavior: smooth;
   }
   
+/* clients.css */
+.swiper-slide-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.swiper-slide-image {
+  max-height: 90px;
+  max-width: 170px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}

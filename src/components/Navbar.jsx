@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import { ChevronDownIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
-import { Link } from "react-router-dom";
 import logo from '../assets/skytech.jpeg';
 
 const Navbar = () => {
@@ -25,7 +24,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 sm:px-4 lg:px-6">
         <div className="flex justify-between h-16 items-center">
           <div className="flex-shrink-0">
-            <img src={logo} alt="Logo" className="w-[150px] h-auto" />
+            <img src={logo} alt="Logo" className="h-20 w-auto object-contain" />
           </div>
 
           {/* Desktop menu */}

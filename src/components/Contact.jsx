@@ -8,21 +8,41 @@ const ContactUs = () => {
           Contact Us
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="columns-3 grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Contact Form */}
-          <form className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Name</label>
-              <input type="text" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+          <form className='row-span-3 md:row-span-4'>
+            <div className='col-span-2'>
+              <label className="block text-sm font-medium text-gray-700">First Name *</label>
+              <input type="text" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required/>
+            </div>
+
+            <div className='col-span-2'>
+              <label className="block text-sm font-medium text-gray-700">Last Name *</label>
+              <input type="text" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required/>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700">Email</label>
-              <input type="email" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" />
+              <label className="block text-sm font-medium text-gray-700">Email *</label>
+              <input type="email" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required/>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700">Message</label>
+              <label className="block text-sm font-medium text-gray-700">Phone *</label>
+              <input type="number" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required/>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Company Name *</label>
+              <input type="text" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required/>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Title *</label>
+              <input type="text" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required/>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Message *</label>
               <textarea rows="4" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"></textarea>
             </div>
 

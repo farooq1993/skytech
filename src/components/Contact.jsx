@@ -7,48 +7,55 @@ const ContactUs = () => {
         <h2 className="text-3xl font-extrabold text-blue-600 mb-8 uppercase text-center">
           Contact Us
         </h2>
-        
+
         <div className="columns-3 grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Contact Form */}
-          <form className='row-span-3 md:row-span-4'>
-            <div className='col-span-2'>
+          <form className="grid grid-cols-2 gap-4">
+            {/* Row 1 */}
+            <div className='col-span-1'>
               <label className="block text-sm font-medium text-gray-700">First Name *</label>
-              <input type="text" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required/>
+              <input type="text" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required />
             </div>
 
-            <div className='col-span-2'>
+            <div className='col-span-1'>
               <label className="block text-sm font-medium text-gray-700">Last Name *</label>
-              <input type="text" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required/>
+              <input type="text" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required />
             </div>
 
-            <div>
+            {/* Row 2 */}
+            <div className='col-span-1'>
               <label className="block text-sm font-medium text-gray-700">Email *</label>
-              <input type="email" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required/>
+              <input type="email" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required />
             </div>
 
-            <div>
+            <div className='col-span-1'>
               <label className="block text-sm font-medium text-gray-700">Phone *</label>
-              <input type="number" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required/>
+              <input type="number" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required />
             </div>
 
-            <div>
+            {/* Row 3 */}
+            <div className='col-span-1'>
               <label className="block text-sm font-medium text-gray-700">Company Name *</label>
-              <input type="text" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required/>
+              <input type="text" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required />
             </div>
 
-            <div>
+            <div className='col-span-1'>
               <label className="block text-sm font-medium text-gray-700">Title *</label>
-              <input type="text" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required/>
+              <input type="text" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required />
             </div>
 
-            <div>
+            {/* Row 4 - Message (full width) */}
+            <div className='col-span-2'>
               <label className="block text-sm font-medium text-gray-700">Message *</label>
               <textarea rows="4" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"></textarea>
             </div>
 
-            <button type="submit" className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition">
-              Send Message
-            </button>
+            {/* Row 5 - Submit button (full width) */}
+            <div className='col-span-2'>
+              <button type="submit" className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition">
+                Send Message
+              </button>
+            </div>
           </form>
 
           {/* Contact Details & Map */}

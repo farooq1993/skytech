@@ -124,9 +124,9 @@ const Navbar = () => {
           <a href="#contact" className="block bg-blue-600 text-white text-center px-4 py-2 rounded-md hover:bg-blue-700">
             Contact Us
           </a>
-          <div className="pt-2 border-t text-gray-800 font-semibold">
+          {/* <div className="pt-2 border-t text-gray-800 font-semibold">
             Call Us: <a href="tel:+971529158949" className="text-blue-600 hover:underline">+971 52 915 8949</a>
-          </div>
+          </div> */}
         </div>
       )}
     </nav>

@@ -59,7 +59,7 @@ const Navbar = () => {
               </button>
               <div className="absolute left-0 top-full bg-white shadow-lg mt-2 w-56 z-20 rounded-md ring-1 ring-black ring-opacity-5 hidden group-hover:block">
                 <div className="py-1">
-                  {engineeringServices.map((service) => (
+                  {itServices.map((service) => (
                     <a
                       key={service.href}
                       href={service.href}

@@ -1,11 +1,46 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'; // Make sure axios is installed
 import { ChevronDownIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import logo from '../assets/skytech.jpeg';
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [itServices, setItServices] = useState([]);
+  const [selectedService, setSelectedService] = useState(null);
+
+  useEffect(() => {
+    const fetchItServices = async () => {
+      try {
+        const response = await axios.get('https://skytechbackend.vercel.app/itservice/');
+        console.log(response.data)
+        setItServices(
+          response.data.map(service => ({
+            id: service.id,
+            name: service.service_name,
+            href: `#${service.service_name.toLowerCase().replace(/\s+/g, '-')}`,
+          }))
+        );
+      } catch (error) {
+        console.error('Failed to fetch IT services:', error);
+      }
+    };
+
+    fetchItServices();
+  }, []);
+
+  const fetchSingleService = async (id) => {
+    try {
+      const res = await axios.get(`https://skytechbackend.vercel.app/getSingleRecord/${id}/`);
+      console.log("Single record:", res.data);
+      // set the state here if you want to display it elsewhere
+      setSelectedService(res.data);
+    } catch (err) {
+      console.error("Error fetching single service:", err);
+    }
+  };
+
 
   const engineeringServices = [
     { name: "Acoustic Engineering", href: "#acoustic" },
@@ -13,11 +48,6 @@ const Navbar = () => {
     { name: "Structural Engineering", href: "#structural" }
   ];
 
-  const itServices = [
-    { name: "Web & Mobile Development", href: "#web-dev" },
-    { name: "Digital Marketing", href: "#marketing" },
-    { name: "ERP Systems", href: "#erp" }
-  ];
 
   return (
     <nav className="bg-blue-900 fixed top-0 left-0 w-full shadow-md z-50">
@@ -53,11 +83,13 @@ const Navbar = () => {
 
             {/* IT Services */}
             <div className="relative group">
-              <button className="flex items-center text-white hover:text-blue-200 transition-colors">
+              <button className="flex items-center text-white transition-colors">
                 IT Services
                 <ChevronDownIcon className="ml-1 h-5 w-5" />
               </button>
-              <div className="absolute left-0 top-full bg-white shadow-lg mt-2 w-56 z-20 rounded-md ring-1 ring-black ring-opacity-5 hidden group-hover:block">
+
+              {/* Dropdown */}
+              <div className="absolute left-0 top-full bg-white shadow-lg mt-2 w-56 z-20 rounded-md ring-1 ring-black ring-opacity-5 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200">
                 <div className="py-1">
                   {itServices.map((service) => (
                     <a
@@ -71,6 +103,7 @@ const Navbar = () => {
                 </div>
               </div>
             </div>
+
 
 
             <a href="#about" className="text-white hover:text-blue-600 transition-colors duration-200">

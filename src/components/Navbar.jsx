@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'; // Make sure axios is installed
+import { useNavigate } from 'react-router-dom';
 import { ChevronDownIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import logo from '../assets/skytech.jpeg';
 
@@ -9,6 +10,8 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [itServices, setItServices] = useState([]);
   const [selectedService, setSelectedService] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchItServices = async () => {
@@ -92,13 +95,14 @@ const Navbar = () => {
               <div className="absolute left-0 top-full bg-white shadow-lg mt-2 w-56 z-20 rounded-md ring-1 ring-black ring-opacity-5 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200">
                 <div className="py-1">
                   {itServices.map((service) => (
-                    <a
-                      key={service.href}
-                      href={service.href}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-100 uppercase"
+                    <button
+                      key={service.id}
+                      onClick={() => navigate(`/getSingleRecord/${service.id}`)}
+                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-blue-100 uppercase"
                     >
                       {service.name}
-                    </a>
+                    </button>
+
                   ))}
                 </div>
               </div>
@@ -146,11 +150,19 @@ const Navbar = () => {
           </div>
           <div>
             <p className="text-gray-600">IT Services</p>
-            {itServices.map((item) => (
-              <a key={item.href} href={item.href} className="block px-2 py-1 text-gray-700 hover:text-blue-600">
-                {item.name}
-              </a>
+            {itServices.map((service) => (
+              <button
+                key={service.id}
+                onClick={() => {
+                  setMobileOpen(false);
+                  navigate(`/services/${service.id}`);
+                }}
+                className="block w-full text-left px-2 py-1 text-gray-700 hover:text-blue-600"
+              >
+                {service.name}
+              </button>
             ))}
+
           </div>
           <a href="#about" className="block text-gray-700 hover:text-blue-600">About Us</a>
           <a href="#clients" className="block text-gray-700 hover:text-blue-600">Clients</a>

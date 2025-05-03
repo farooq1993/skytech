@@ -5,6 +5,8 @@ import ServiceDetailPage from './pages/ServiceDetailPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ContactUs from './components/Contact';
+import About from './components/About';
+import Clients from './components/Clients'
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/getSingleRecord/:id" element={<ServiceDetailPage />} />
           <Route path="/ContactUs" element={<ContactUs />} />
+          <Route path="/About" element={<About />} />
+          <Route path="/Clients" element={<Clients />} />
         </Routes>
         <Footer />
       </div>

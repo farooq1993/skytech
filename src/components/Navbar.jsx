@@ -56,7 +56,10 @@ const Navbar = () => {
         <div className="flex justify-between h-16 items-center">
           <div className="flex-shrink-0">
             <Link to="/">
-            <img src={logo} alt="Logo" className="h-20 w-auto object-contain" />
+            {/* <img src={logo} alt="Logo" className="h-20  object-contain" /> */}
+            <img src="https://skytechme.com/wp-content/uploads/2024/10/cropped-Copy-of-Blue-Minimalist-Simple-Technology-Logo-.png" 
+              alt="Skytech Logo"
+              className="h-12 sm:h-16 md:h-20 w-auto object-contain" />
             </Link> 
           </div>
           {/* Desktop menu */}
@@ -110,12 +113,12 @@ const Navbar = () => {
               </div>
             </div>
 
-            <a href="#about" className="text-white hover:text-blue-600 transition-colors duration-200">
+            <Link to="About" className="text-white hover:text-blue-600 transition-colors duration-200">
               About Us
-            </a>
-            <a href="#clients" className="text-white hover:text-blue-600 transition-colors duration-200">
+            </Link>
+            <Link to="Clients" className="text-white hover:text-blue-600 transition-colors duration-200">
               Clients
-            </a>
+            </Link>
             <Link
               to="/ContactUs"
               className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors duration-200 uppercase"
@@ -164,14 +167,12 @@ const Navbar = () => {
             ))}
 
           </div>
-          <a href="#about" className="block text-gray-700 hover:text-blue-600">About Us</a>
-          <a href="#clients" className="block text-gray-700 hover:text-blue-600">Clients</a>
-          <a href="#contact" className="block bg-blue-600 text-white text-center px-4 py-2 rounded-md hover:bg-blue-700">
+          <Link to="About" className="block text-gray-700 hover:text-blue-600">About Us</Link>
+          <Link to="Clients" className="block text-gray-700 hover:text-blue-600">Clients</Link>
+          <Link
+              to="/ContactUs" className="block bg-blue-600 text-white text-center px-4 py-2 rounded-md hover:bg-blue-700">
             Contact Us
-          </a>
-          {/* <div className="pt-2 border-t text-gray-800 font-semibold">
-            Call Us: <a href="tel:+971529158949" className="text-blue-600 hover:underline">+971 52 915 8949</a>
-          </div> */}
+          </Link>
         </div>
       )}
     </nav>

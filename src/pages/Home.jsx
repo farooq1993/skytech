@@ -5,8 +5,8 @@ import About from '../components/About';
 import Clients from '../components/Clients';
 import Testimonial from '../components/Testimonial';
 import CTA from '../components/CTA';
-import ContactUs from '../components/Contact';
 import Stats from '../components/Stats';
+import WhatsAppButton from '../components/WhatsAppButton';
 
 const Home = () => {
   return (
@@ -18,7 +18,7 @@ const Home = () => {
       <Clients />
       <Testimonial />
       <CTA />
-      <ContactUs />
+      <WhatsAppButton />
     </>
   );
 };

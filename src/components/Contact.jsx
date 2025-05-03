@@ -44,19 +44,41 @@ const ContactUs = () => {
               <input type="text" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required />
             </div>
 
-            {/* Row 4 - Message (full width) */}
+            {/* Row 4 - Message */}
             <div className='col-span-2'>
               <label className="block text-sm font-medium text-gray-700">Message *</label>
-              <textarea rows="4" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"></textarea>
+              <textarea rows="4" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required></textarea>
             </div>
 
-            {/* Row 5 - Submit button (full width) */}
+            {/* Row 5 - Consent Section */}
+            <div className="col-span-2 space-y-4 text-sm text-gray-700">
+              <p>
+                Credera is committed to protecting and respecting your privacy. From time to time, we would like to contact you about our services, thought leadership, and events, as well as other content that may be of interest to you. If you consent to us contacting you for this purpose, please tick below:
+              </p>
+
+              <div className="flex items-start space-x-3">
+                <input type="checkbox" id="consent" name="consent" className="mt-1" required />
+                <label htmlFor="consent">
+                  I agree to receive other communications from Credera.
+                </label>
+              </div>
+
+              <p>
+                You may unsubscribe from these communications at any time. For more information on how to unsubscribe, our privacy practices, and how we are committed to protecting and respecting your privacy, please review our <a href="/privacy-policy" className="text-blue-600 underline">Privacy Policy</a>.
+              </p>
+              <p>
+                By clicking submit, you consent to allow Credera to store and process the personal information submitted above to provide you the content requested.
+              </p>
+            </div>
+
+            {/* Submit button */}
             <div className='col-span-2'>
               <button type="submit" className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition">
                 Send Message
               </button>
             </div>
           </form>
+
 
           {/* Contact Details & Map */}
           <div className="space-y-6">

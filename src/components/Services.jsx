@@ -1,4 +1,9 @@
 import { motion } from "framer-motion";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const Services = () => {
   const engineeringServices = [
@@ -30,11 +35,19 @@ const Services = () => {
 
   const itServices = [
     {
-      title: "Web & Mobile App Development",
+      title: "Web Development",
       description: "Custom solutions for iOS, Android, and Web platforms",
       details: "We build responsive, scalable applications using modern frameworks like React, Flutter, and Node.js with a focus on user experience.",
       icon: "💻",
       image: "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=800",
+      category: "it"
+    },
+    {
+      title: "Mobile App Development",
+      description: "What is Mobile Application Development",
+      details: "Mobile application development services encompass the creation, design, and maintenance of mobile apps.",
+      icon: "💻",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsZ14J4oos9cbV07hdq2HaRQm-wEQsvsGxsQ&s",
       category: "it"
     },
     {
@@ -80,7 +93,7 @@ const Services = () => {
     <section id="services" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Engineering Services */}
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
@@ -92,8 +105,8 @@ const Services = () => {
             Trusted by Dubai's leading construction firms and property developers
           </p>
         </motion.div>
-        
-        <motion.div 
+
+        <motion.div
           variants={container}
           initial="hidden"
           whileInView="show"
@@ -108,7 +121,7 @@ const Services = () => {
         </motion.div>
 
         {/* IT Services */}
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
@@ -120,20 +133,37 @@ const Services = () => {
             Digital transformation solutions for UAE businesses
           </p>
         </motion.div>
-        
-        <motion.div 
+
+        <motion.div
           variants={container}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid md:grid-cols-3 gap-8"
         >
-          {itServices.map((service, index) => (
-            <motion.div key={`it-${index}`} variants={item}>
-              <EnhancedServiceCard service={service} />
-            </motion.div>
-          ))}
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={30}
+            slidesPerView={1}
+            navigation
+            pagination={{ clickable: true }}
+            autoplay={itServices.length > 3 ? { delay: 3000, disableOnInteraction: false } : false}
+            breakpoints={{
+              640: { slidesPerView: 1 },
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 }
+            }}
+          >
+            {itServices.map((service, index) => (
+              <SwiperSlide key={`it-${index}`}>
+                <motion.div variants={item}>
+                  <EnhancedServiceCard service={service} />
+                </motion.div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
         </motion.div>
+
       </div>
     </section>
   );
@@ -141,10 +171,9 @@ const Services = () => {
 
 // Enhanced Service Card with image and hover details
 const EnhancedServiceCard = ({ service }) => (
-  <motion.div 
-    className={`relative overflow-hidden rounded-lg shadow-md h-96 ${
-      service.category === 'engineering' ? 'border-orange-500' : 'border-blue-500'
-    }`}
+  <motion.div
+    className={`relative overflow-hidden rounded-lg shadow-md h-96 ${service.category === 'engineering' ? 'border-orange-500' : 'border-blue-500'
+      }`}
     whileHover="hover"
     initial="rest"
   >
@@ -156,15 +185,15 @@ const EnhancedServiceCard = ({ service }) => (
         hover: { opacity: 0.3 }
       }}
     >
-      <img 
-        src={service.image} 
+      <img
+        src={service.image}
         alt={service.title}
         className="w-full h-full object-cover"
       />
     </motion.div>
-    
+
     {/* Basic Info (always visible) */}
-    <motion.div 
+    <motion.div
       className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent text-white"
       variants={{
         rest: { y: 0 },
@@ -175,9 +204,9 @@ const EnhancedServiceCard = ({ service }) => (
       <h3 className="text-xl font-bold mb-1">{service.title}</h3>
       <p className="text-sm">{service.description}</p>
     </motion.div>
-    
+
     {/* Detailed Info (appears on hover) */}
-    <motion.div 
+    <motion.div
       className="absolute inset-0 p-6 flex flex-col justify-center bg-black/80 text-white"
       variants={{
         rest: { opacity: 0, y: 50 },

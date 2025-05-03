@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import ServiceDetailPage from './pages/ServiceDetailPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ContactUs from './components/Contact';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/getSingleRecord/:id" element={<ServiceDetailPage />} />
+          <Route path="/ContactUs" element={<ContactUs />} />
         </Routes>
         <Footer />
       </div>

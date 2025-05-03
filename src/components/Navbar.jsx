@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'; // Make sure axios is installed
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { ChevronDownIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
 import logo from '../assets/skytech.jpeg';
 
@@ -17,7 +17,6 @@ const Navbar = () => {
     const fetchItServices = async () => {
       try {
         const response = await axios.get('https://skytechbackend.vercel.app/itservice/');
-        console.log(response.data)
         setItServices(
           response.data.map(service => ({
             id: service.id,
@@ -36,7 +35,6 @@ const Navbar = () => {
   const fetchSingleService = async (id) => {
     try {
       const res = await axios.get(`https://skytechbackend.vercel.app/getSingleRecord/${id}/`);
-      console.log("Single record:", res.data);
       // set the state here if you want to display it elsewhere
       setSelectedService(res.data);
     } catch (err) {
@@ -57,11 +55,15 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 sm:px-4 lg:px-6">
         <div className="flex justify-between h-16 items-center">
           <div className="flex-shrink-0">
+            <Link to="/">
             <img src={logo} alt="Logo" className="h-20 w-auto object-contain" />
+            </Link> 
           </div>
-
           {/* Desktop menu */}
           <div className="hidden md:flex items-center space-x-8 font-medium uppercase tracking-wider text-sm">
+          <Link to="/" className="text-white hover:text-blue-600 transition-colors duration-200">
+              Home
+            </Link>
             {/* Engineering Services */}
             <div className="relative group">
               <button className="flex items-center text-white hover:text-blue-200 transition-colors">
@@ -108,20 +110,18 @@ const Navbar = () => {
               </div>
             </div>
 
-
-
             <a href="#about" className="text-white hover:text-blue-600 transition-colors duration-200">
               About Us
             </a>
             <a href="#clients" className="text-white hover:text-blue-600 transition-colors duration-200">
               Clients
             </a>
-            <a
-              href="#contact"
+            <Link
+              to="/ContactUs"
               className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors duration-200 uppercase"
             >
               Contact Us
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Hamburger */}

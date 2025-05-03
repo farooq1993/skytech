@@ -1,5 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { motion, useAnimation, useInView } from 'framer-motion';
+import { useRef } from 'react';
 
 const stats = [
   { label: 'Cool Number', value: 100 },
@@ -7,6 +8,38 @@ const stats = [
   { label: 'Valuable Clients', value: 1000 },
   { label: 'Our Team', value: 54 },
 ];
+
+const AnimatedCounter = ({ target }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (inView) {
+      let start = 0;
+      const duration = 2000;
+      const stepTime = 16;
+      const totalSteps = Math.ceil(duration / stepTime);
+      const increment = target / totalSteps;
+
+      const counter = setInterval(() => {
+        start += increment;
+        if (start >= target) {
+          clearInterval(counter);
+          setCount(target);
+        } else {
+          setCount(Math.ceil(start));
+        }
+      }, stepTime);
+    }
+  }, [inView, target]);
+
+  return (
+    <span ref={ref}>
+      {count.toLocaleString()}<span className="text-indigo-400">+</span>
+    </span>
+  );
+};
 
 const Stats = () => {
   return (
@@ -29,7 +62,7 @@ const Stats = () => {
               className="bg-white p-6 rounded-xl shadow-md"
             >
               <h3 className="text-4xl font-extrabold text-indigo-600 mb-2">
-                {stat.value.toLocaleString()}<span className="text-indigo-400">+</span>
+                <AnimatedCounter target={stat.value} />
               </h3>
               <p className="text-lg font-medium text-gray-700">{stat.label}</p>
             </motion.div>

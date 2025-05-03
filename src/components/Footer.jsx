@@ -12,7 +12,7 @@ const Footer = () => {
             <p className="text-gray-400 mb-2">Deira - Dubai - UAE</p>
             <p className="text-gray-400 mb-2">
               Mobile No: <br />
-              +971529158949 / +971527579159
+              +971 52 757 9159 / +971 52 915 8949
             </p>
             <p className="text-gray-400">
               Email: <a href="mailto:info@skytechme.com" className="hover:text-white">info@skytechme.com</a>

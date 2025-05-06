@@ -8,30 +8,55 @@ import 'swiper/css/pagination';
 const Services = () => {
   const engineeringServices = [
     {
-      title: "Acoustic Engineering",
-      description: "Noise control solutions for buildings, auditoriums, and industrial spaces",
-      details: "We provide comprehensive acoustic analysis, soundproofing solutions, and noise reduction strategies tailored to your specific needs.",
-      icon: "🔇",
-      image: "https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg?auto=compress&cs=tinysrgb&w=800", // Replace with your actual image path
+      title: "Architectural Acoustics",
+      description: "Creative solutions for sound quality and tranquil environments.",
+      details: "Providing creative architectural acoustics solutions for enhanced sound quality and tranquil environments.",
+      icon: "🎼",
+      image: "https://www.luxxbox.com/wp-content/uploads/2022/01/MOW0037-1024x683.jpg",
       category: "engineering"
     },
     {
-      title: "MEP Engineering",
-      description: "Comprehensive mechanical, electrical, and plumbing designs",
-      details: "Our MEP solutions integrate sustainable technologies with efficient design to optimize building performance and reduce operational costs.",
+      title: "Commercial Acoustics",
+      description: "Refining every note and word with precision.",
+      details: "Refining every note and word with accuracy: Your reliable partner for commercial acoustics solutions.",
+      icon: "🎤",
+      image: "https://skytechme.com/wp-content/uploads/2025/02/cs.jpg",
+      category: "engineering"
+    },
+    {
+      title: "BIM Modeling",
+      description: "Specialized MEP BIM for efficient, sustainable designs.",
+      details: "Specialized MEP BIM Modeling Solutions: Improving sustainability for Peak Performance and Regulatory compliance.",
+      icon: "📐",
+      image: "https://skytechme.com/wp-content/uploads/2025/02/bd.jpg",
+      category: "engineering"
+    },
+    {
+      title: "MEP Design",
+      description: "Effective and sustainable MEP design for modern infrastructure.",
+      details: "Providing creative and effective MEP design solutions for sustainable and future-proof infrastructure.",
       icon: "⚙️",
       image: "https://emiworld.org/sites/default/files/styles/wlarge/public/images/mep.jpg?itok=lpqlQYaX",
       category: "engineering"
     },
     {
-      title: "Structural Engineering",
-      description: "Robust structural solutions for all construction needs",
-      details: "From skyscrapers to residential buildings, our structural designs combine safety, innovation, and cost-effectiveness.",
+      title: "Fuel Oil Systems",
+      description: "Complete fuel system design for smooth energy management.",
+      details: "Your reliable partner for complete Fuel Oil Systems solutions, guaranteeing smooth energy management and efficiency.",
+      icon: "⛽",
+      image: "https://images.pexels.com/photos/248159/pexels-photo-248159.jpeg?auto=compress&cs=tinysrgb&w=800",
+      category: "engineering"
+    },
+    {
+      title: "Structural Design",
+      description: "Dependable structural design that transforms vision into reality.",
+      details: "Transforming your vision into reality, enabling your projects with creative and dependable structural design solutions.",
       icon: "🏗️",
       image: "https://kimkesti.com/wp-content/uploads/2022/03/what-do-structural-engineers-do-kimkesti.jpg",
       category: "engineering"
     }
   ];
+
 
   const itServices = [
     {
@@ -111,14 +136,30 @@ const Services = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-50px" }}
-          className="grid md:grid-cols-3 gap-8 mb-20"
         >
-          {engineeringServices.map((service, index) => (
-            <motion.div key={`eng-${index}`} variants={item}>
-              <EnhancedServiceCard service={service} />
-            </motion.div>
-          ))}
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={30}
+            slidesPerView={1}
+            navigation
+            pagination={{ clickable: true }}
+            autoplay={engineeringServices.length > 3 ? { delay: 3000, disableOnInteraction: false } : false}
+            breakpoints={{
+              640: { slidesPerView: 1 },
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 }
+            }}
+          >
+            {engineeringServices.map((service, index) => (
+              <SwiperSlide key={`eng-${index}`}>
+                <motion.div variants={item}>
+                  <EnhancedServiceCard service={service} />
+                </motion.div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </motion.div>
+
 
         {/* IT Services */}
         <motion.div

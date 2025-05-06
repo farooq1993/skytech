@@ -2,7 +2,7 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
-import '../index.css';
+import '../index.css'; // Ensure you can modify this file if needed
 
 const Clients = () => {
   const clientLogos = [
@@ -41,14 +41,13 @@ const Clients = () => {
           }}
           loop={clientLogos.length > 4}
         >
-
           {clientLogos.map((client, index) => (
             <SwiperSlide key={index}>
-              <figure className="swiper-slide-inner">
+              <figure className="flex justify-center items-center h-24">
                 <img
                   src={client.image}
                   alt={client.name}
-                  className="swiper-slide-image"
+                  className="h-full object-contain mix-blend-multiply transition duration-300 hover:scale-105"
                 />
               </figure>
             </SwiperSlide>

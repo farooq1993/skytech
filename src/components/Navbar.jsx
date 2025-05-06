@@ -59,6 +59,7 @@ const Navbar = () => {
             {/* <img src={logo} alt="Logo" className="h-20  object-contain" /> */}
             <img src="https://skytechme.com/wp-content/uploads/2024/10/cropped-Copy-of-Blue-Minimalist-Simple-Technology-Logo-.png" 
               alt="Skytech Logo"
+              onClick={() => setMobileOpen(false)}
               className="h-12 sm:h-16 md:h-20 w-auto object-contain" />
             </Link> 
           </div>
@@ -66,6 +67,9 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-8 font-medium uppercase tracking-wider text-sm">
           <Link to="/" className="text-white hover:text-blue-600 transition-colors duration-200">
               Home
+            </Link>
+            <Link to="About" className="text-white hover:text-blue-600 transition-colors duration-200">
+              About Us
             </Link>
             {/* Engineering Services */}
             <div className="relative group">
@@ -112,9 +116,8 @@ const Navbar = () => {
                 </div>
               </div>
             </div>
-
-            <Link to="About" className="text-white hover:text-blue-600 transition-colors duration-200">
-              About Us
+            <Link to="#" className="text-white hover:text-blue-600 transition-colors duration-200">
+              Case Study
             </Link>
             <Link to="Clients" className="text-white hover:text-blue-600 transition-colors duration-200">
               Clients
@@ -142,11 +145,11 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden px-4 pt-2 pb-4 space-y-3 text-sm font-medium uppercase">
+        <div className="md:hidden px-4 pt-2 pb-4 space-y-3 text-sm font-medium uppercase bg-blue-900 text-white">
           <div>
             <p className="text-gray-600">Engineering Services</p>
             {engineeringServices.map((item) => (
-              <a key={item.href} href={item.href} className="block px-2 py-1 text-gray-700 hover:text-blue-600">
+              <a key={item.href} href={item.href} className="block px-2 py-1 text-white hover:text-blue-300">
                 {item.name}
               </a>
             ))}
@@ -158,7 +161,7 @@ const Navbar = () => {
                 key={service.id}
                 onClick={() => {
                   setMobileOpen(false);
-                  navigate(`/services/${service.id}`);
+                  navigate(`/getSingleRecord/${service.id}`);
                 }}
                 className="block w-full text-left px-2 py-1 text-gray-700 hover:text-blue-600"
               >
@@ -167,10 +170,18 @@ const Navbar = () => {
             ))}
 
           </div>
-          <Link to="About" className="block text-gray-700 hover:text-blue-600">About Us</Link>
-          <Link to="Clients" className="block text-gray-700 hover:text-blue-600">Clients</Link>
+          <Link to="About" 
+          onClick={() => setMobileOpen(false)}
+          className="block text-white hover:text-blue-300">
+            About Us
+            </Link>
+          <Link to="Clients"
+          onClick={() => setMobileOpen(false)}
+           className="block text-white hover:text-blue-300">Clients</Link>
           <Link
-              to="/ContactUs" className="block bg-blue-600 text-white text-center px-4 py-2 rounded-md hover:bg-blue-700">
+              to="/ContactUs" 
+              onClick={() => setMobileOpen(false)}
+              className="block bg-blue-600 text-white text-center px-4 py-2 rounded-md hover:bg-blue-700">
             Contact Us
           </Link>
         </div>

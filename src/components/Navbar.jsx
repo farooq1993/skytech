@@ -57,13 +57,13 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-blue-900 fixed top-0 left-0 w-full shadow-md z-50">
+    <nav className="bg-white fixed top-0 left-0 w-full shadow-md z-50">
       <div className="max-w-7xl mx-auto px-6 sm:px-4 lg:px-6">
         <div className="flex justify-between h-16 items-center">
           <div className="flex-shrink-0">
             <Link to="/">
-              {/* <img src={logo} alt="Logo" className="h-20  object-contain" /> */}
-              <img src="https://skytechme.com/wp-content/uploads/2024/10/cropped-Copy-of-Blue-Minimalist-Simple-Technology-Logo-.png"
+              <img 
+                src="https://skytechme.com/wp-content/uploads/2024/10/cropped-Copy-of-Blue-Minimalist-Simple-Technology-Logo-.png"
                 alt="Skytech Logo"
                 className="h-12 md:h-16 w-auto object-contain cursor-pointer"
                 onClick={() => setMobileOpen(false)}
@@ -74,21 +74,21 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-8 font-medium uppercase tracking-wider text-sm">
             <Link
               to="/"
-              className="text-white hover:text-blue-600 transition-colors duration-200"
+              className="text-blue-800 hover:text-blue-600 transition-colors duration-200"
             >
               Home
             </Link>
             <Link
               to="About"
-              className="text-white hover:text-blue-600 transition-colors duration-200"
+              className="text-blue-800 hover:text-blue-600 transition-colors duration-200"
             >
               About Us
             </Link>
             {/* Engineering Services */}
             <div className="relative group">
-              <button className="flex items-center text-white hover:text-blue-200 transition-colors">
+              <button className="flex items-center text-blue-800 hover:text-blue-600 transition-colors">
                 ENGINEERING SERVICES
-                <ChevronDownIcon className="ml-1 h-5 w-5" />
+                <ChevronDownIcon className="ml-1 h-5 w-5 text-blue-800" />
               </button>
               <div className="absolute left-0 top-full bg-white shadow-lg mt-2 w-56 z-20 rounded-md ring-1 ring-black ring-opacity-5 hidden group-hover:block">
                 <div className="py-1">
@@ -96,7 +96,7 @@ const Navbar = () => {
                     <a
                       key={service.href}
                       href={service.href}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-100 uppercase"
+                      className="block px-4 py-2 text-sm text-blue-800 hover:bg-blue-100 uppercase"
                     >
                       {service.name}
                     </a>
@@ -107,9 +107,9 @@ const Navbar = () => {
 
             {/* IT Services */}
             <div className="relative group">
-              <button className="flex items-center text-white transition-colors">
+              <button className="flex items-center text-blue-800 hover:text-blue-600 transition-colors">
                 IT Services
-                <ChevronDownIcon className="ml-1 h-5 w-5" />
+                <ChevronDownIcon className="ml-1 h-5 w-5 text-blue-800" />
               </button>
 
               {/* Dropdown */}
@@ -119,7 +119,7 @@ const Navbar = () => {
                     <button
                       key={service.id}
                       onClick={() => navigate(`/getSingleRecord/${service.id}`)}
-                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-blue-100 uppercase"
+                      className="block w-full text-left px-4 py-2 text-sm text-blue-800 hover:bg-blue-100 uppercase"
                     >
                       {service.name}
                     </button>
@@ -129,7 +129,7 @@ const Navbar = () => {
             </div>
             <Link
               to="#"
-              className="text-white hover:text-blue-600 transition-colors duration-200"
+              className="text-blue-800 hover:text-blue-600 transition-colors duration-200"
             >
               Case Study
             </Link>
@@ -145,9 +145,9 @@ const Navbar = () => {
           <div className="md:hidden flex items-center">
             <button onClick={() => setMobileOpen(!mobileOpen)}>
               {mobileOpen ? (
-                <XMarkIcon className="h-6 w-6 text-white" />
+                <XMarkIcon className="h-6 w-6 text-blue-800" />
               ) : (
-                <Bars3Icon className="h-6 w-6 text-white" />
+                <Bars3Icon className="h-6 w-6 text-blue-800" />
               )}
             </button>
           </div>
@@ -156,21 +156,21 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden px-4 pt-2 pb-4 space-y-3 text-sm font-medium uppercase bg-blue-900 text-white">
+        <div className="md:hidden px-4 pt-2 pb-4 space-y-3 text-sm font-medium uppercase bg-white text-blue-800 border-t border-gray-200">
           <div>
-            <p className="text-gray-600">Engineering Services</p>
+            <p className="text-blue-800 font-bold">Engineering Services</p>
             {engineeringServices.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="block px-2 py-1 text-white hover:text-blue-300"
+                className="block px-2 py-1 text-blue-800 hover:text-blue-600"
               >
                 {item.name}
               </a>
             ))}
           </div>
           <div>
-            <p className="text-gray-600">IT Services</p>
+            <p className="text-blue-800 font-bold">IT Services</p>
             {itServices.map((service) => (
               <button
                 key={service.id}
@@ -178,7 +178,7 @@ const Navbar = () => {
                   setMobileOpen(false);
                   navigate(`/getSingleRecord/${service.id}`);
                 }}
-                className="block w-full text-left px-2 py-1 text-gray-700 hover:text-blue-600"
+                className="block w-full text-left px-2 py-1 text-blue-800 hover:text-blue-600"
               >
                 {service.name}
               </button>
@@ -187,14 +187,14 @@ const Navbar = () => {
           <Link
             to="About"
             onClick={() => setMobileOpen(false)}
-            className="block text-white hover:text-blue-300"
+            className="block text-blue-800 hover:text-blue-600"
           >
             About Us
           </Link>
           <Link
             to="Clients"
             onClick={() => setMobileOpen(false)}
-            className="block text-white hover:text-blue-300"
+            className="block text-blue-800 hover:text-blue-600"
           >
             Clients
           </Link>

@@ -119,9 +119,9 @@ const Navbar = () => {
             <Link to="#" className="text-white hover:text-blue-600 transition-colors duration-200">
               Case Study
             </Link>
-            <Link to="Clients" className="text-white hover:text-blue-600 transition-colors duration-200">
+            {/* <Link to="Clients" className="text-white hover:text-blue-600 transition-colors duration-200">
               Clients
-            </Link>
+            </Link> */}
             <Link
               to="/ContactUs"
               className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors duration-200 uppercase"

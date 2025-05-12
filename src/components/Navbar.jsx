@@ -14,6 +14,8 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [itServices, setItServices] = useState([]);
   const [selectedService, setSelectedService] = useState(null);
+  const [showEngineering, setShowEngineering] = useState(false);
+  const [showItServices, setShowItServices] = useState(false);
 
   const navigate = useNavigate();
 
@@ -155,58 +157,92 @@ const Navbar = () => {
       </div>
 
       {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="md:hidden px-4 pt-2 pb-4 space-y-3 text-sm font-medium uppercase bg-white text-blue-800 border-t border-gray-200">
-          <div>
-            <p className="text-blue-800 font-bold">Engineering Services</p>
-            {engineeringServices.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="block px-2 py-1 text-blue-800 hover:text-blue-600"
-              >
-                {item.name}
-              </a>
-            ))}
-          </div>
-          <div>
-            <p className="text-blue-800 font-bold">IT Services</p>
-            {itServices.map((service) => (
-              <button
-                key={service.id}
-                onClick={() => {
-                  setMobileOpen(false);
-                  navigate(`/getSingleRecord/${service.id}`);
-                }}
-                className="block w-full text-left px-2 py-1 text-blue-800 hover:text-blue-600"
-              >
-                {service.name}
-              </button>
-            ))}
-          </div>
-          <Link
-            to="About"
-            onClick={() => setMobileOpen(false)}
-            className="block text-blue-800 hover:text-blue-600"
-          >
-            About Us
-          </Link>
-          <Link
-            to="Clients"
-            onClick={() => setMobileOpen(false)}
-            className="block text-blue-800 hover:text-blue-600"
-          >
-            Clients
-          </Link>
-          <Link
-            to="/ContactUs"
-            onClick={() => setMobileOpen(false)}
-            className="block bg-blue-600 text-white text-center px-4 py-2 rounded-md hover:bg-blue-700"
-          >
-            Contact Us
-          </Link>
+      {/* Mobile menu */}
+{mobileOpen && (
+  <div className="md:hidden px-4 pt-2 pb-4 space-y-3 text-sm font-medium uppercase bg-white text-blue-800 border-t border-gray-200">
+    <Link
+      to="/"
+      onClick={() => setMobileOpen(false)}
+      className="block px-2 py-1 text-blue-800 hover:text-blue-600"
+    >
+      Home
+    </Link>
+    <Link
+      to="About"
+      onClick={() => setMobileOpen(false)}
+      className="block px-2 py-1 text-blue-800 hover:text-blue-600"
+    >
+      About Us
+    </Link>
+    
+    {/* Collapsible Engineering Services */}
+    <div>
+      <button 
+        onClick={() => setShowEngineering(!showEngineering)}
+        className="flex items-center justify-between w-full px-2 py-1 text-blue-800 hover:text-blue-600"
+      >
+        <span>Engineering Services</span>
+        <ChevronDownIcon className={`h-4 w-4 transition-transform ${showEngineering ? 'transform rotate-180' : ''}`} />
+      </button>
+      {showEngineering && (
+        <div className="pl-4">
+          {engineeringServices.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className="block px-2 py-1 text-blue-800 hover:text-blue-600"
+              onClick={() => setMobileOpen(false)}
+            >
+              {item.name}
+            </a>
+          ))}
         </div>
       )}
+    </div>
+    
+    {/* Collapsible IT Services */}
+    <div>
+      <button 
+        onClick={() => setShowItServices(!showItServices)}
+        className="flex items-center justify-between w-full px-2 py-1 text-blue-800 hover:text-blue-600"
+      >
+        <span>IT Services</span>
+        <ChevronDownIcon className={`h-4 w-4 transition-transform ${showItServices ? 'transform rotate-180' : ''}`} />
+      </button>
+      {showItServices && (
+        <div className="pl-4">
+          {itServices.map((service) => (
+            <button
+              key={service.id}
+              onClick={() => {
+                setMobileOpen(false);
+                navigate(`/getSingleRecord/${service.id}`);
+              }}
+              className="block w-full text-left px-2 py-1 text-blue-800 hover:text-blue-600"
+            >
+              {service.name}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+    
+    <Link
+      to="Clients"
+      onClick={() => setMobileOpen(false)}
+      className="block px-2 py-1 text-blue-800 hover:text-blue-600"
+    >
+      Clients
+    </Link>
+    <Link
+      to="/ContactUs"
+      onClick={() => setMobileOpen(false)}
+      className="block bg-blue-600 text-white text-center px-4 py-2 rounded-md hover:bg-blue-700"
+    >
+      Contact Us
+    </Link>
+  </div>
+)}
     </nav>
   );
 };

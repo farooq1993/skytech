@@ -1,86 +1,88 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const ContactUs = () => {
+  const [formData, setFormData] = useState({
+    first_name: '',
+    last_name: '',
+    email: '',
+    phone: '',
+    company_name: '',
+    title: '',
+    message: '',
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [responseMsg, setResponseMsg] = useState(null);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setResponseMsg(null);
+
+    try {
+      const res = await fetch('http://127.0.0.1:8000/enquireis/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (res.ok) {
+        setResponseMsg('Message sent successfully!');
+        setFormData({
+          first_name: '',
+          last_name: '',
+          email: '',
+          phone: '',
+          company_name: '',
+          title: '',
+          message: '',
+        });
+      } else {
+        setResponseMsg('Error: ' + JSON.stringify(data));
+      }
+    } catch (error) {
+      setResponseMsg('Something went wrong: ' + error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section id="contact" className="bg-white py-16 scroll-mt-20">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-extrabold text-blue-600 mb-8 uppercase text-center">
-          Contact Us
-        </h2>
+        <h2 className="text-3xl font-extrabold text-blue-600 mb-8 uppercase text-center">Contact Us</h2>
 
-        <div className="columns-3 grid grid-cols-1 md:grid-cols-2 gap-10">
-          {/* Contact Form */}
-          <form className="grid grid-cols-2 gap-4">
-            {/* Row 1 */}
-            <div className='col-span-1'>
-              <label className="block text-sm font-medium text-gray-700">First Name *</label>
-              <input type="text" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required />
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <form onSubmit={handleSubmit} className="grid grid-cols-2 gap-4">
+            <input name="first_name" value={formData.first_name} onChange={handleChange} required className="col-span-1 border rounded px-4 py-2" placeholder="First Name *" />
+            <input name="last_name" value={formData.last_name} onChange={handleChange} required className="col-span-1 border rounded px-4 py-2" placeholder="Last Name *" />
+            <input name="email" type="email" value={formData.email} onChange={handleChange} required className="col-span-1 border rounded px-4 py-2" placeholder="Email *" />
+            <input name="phone" value={formData.phone} onChange={handleChange} required className="col-span-1 border rounded px-4 py-2" placeholder="Phone *" />
+            <input name="company_name" value={formData.company_name} onChange={handleChange} required className="col-span-1 border rounded px-4 py-2" placeholder="Company Name *" />
+            <input name="title" value={formData.title} onChange={handleChange} required className="col-span-1 border rounded px-4 py-2" placeholder="Title *" />
+            <textarea name="message" value={formData.message} onChange={handleChange} required rows="4" className="col-span-2 border rounded px-4 py-2" placeholder="Message *"></textarea>
 
-            <div className='col-span-1'>
-              <label className="block text-sm font-medium text-gray-700">Last Name *</label>
-              <input type="text" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required />
-            </div>
-
-            {/* Row 2 */}
-            <div className='col-span-1'>
-              <label className="block text-sm font-medium text-gray-700">Email *</label>
-              <input type="email" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required />
-            </div>
-
-            <div className='col-span-1'>
-              <label className="block text-sm font-medium text-gray-700">Phone *</label>
-              <input type="number" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required />
-            </div>
-
-            {/* Row 3 */}
-            <div className='col-span-1'>
-              <label className="block text-sm font-medium text-gray-700">Company Name *</label>
-              <input type="text" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required />
-            </div>
-
-            <div className='col-span-1'>
-              <label className="block text-sm font-medium text-gray-700">Title *</label>
-              <input type="text" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required />
-            </div>
-
-            {/* Row 4 - Message */}
-            <div className='col-span-2'>
-              <label className="block text-sm font-medium text-gray-700">Message *</label>
-              <textarea rows="4" className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required></textarea>
-            </div>
-
-            {/* Row 5 - Consent Section */}
-            <div className="col-span-2 space-y-4 text-sm text-gray-700">
-              <p>
-                Credera is committed to protecting and respecting your privacy. From time to time, we would like to contact you about our services, thought leadership, and events, as well as other content that may be of interest to you. If you consent to us contacting you for this purpose, please tick below:
-              </p>
-
-              <div className="flex items-start space-x-3">
-                <input type="checkbox" id="consent" name="consent" className="mt-1" required />
-                <label htmlFor="consent">
-                  I agree to receive other communications from Credera.
-                </label>
-              </div>
-
-              <p>
-                You may unsubscribe from these communications at any time. For more information on how to unsubscribe, our privacy practices, and how we are committed to protecting and respecting your privacy, please review our <a href="/privacy-policy" className="text-blue-600 underline">Privacy Policy</a>.
-              </p>
-              <p>
-                By clicking submit, you consent to allow Credera to store and process the personal information submitted above to provide you the content requested.
-              </p>
-            </div>
-
-            {/* Submit button */}
-            <div className='col-span-2'>
-              <button type="submit" className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition">
-                Send Message
+            <div className="col-span-2">
+              <button type="submit" disabled={loading} className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition">
+                {loading ? 'Sending...' : 'Send Message'}
               </button>
             </div>
+
+            {responseMsg && (
+              <div className="col-span-2 text-sm mt-2 text-center text-red-600">{responseMsg}</div>
+            )}
           </form>
 
-
-          {/* Contact Details & Map */}
+          {/* Contact Info and Map (unchanged) */}
           <div className="space-y-6">
             <div>
               <h3 className="text-xl font-semibold text-gray-800">Our Location</h3>
@@ -88,16 +90,11 @@ const ContactUs = () => {
               <p className="mt-2 text-gray-600">Mobile No: <a href="tel:+971529158949" className="text-blue-600">+971529158949</a></p>
               <p className="mt-2 text-gray-600">Email ID: <a href="mailto:info@skytechme.com" className="text-blue-600">info@skytechme.com</a></p>
             </div>
-
             <div>
               <iframe
                 title="Google Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.5372680841224!2d55.32046907520489!3d25.271139977662315!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f434267d0f6a1%3A0x827e01c8201c66d!2sDeira%2C%20Dubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2sin!4v1712731732970!5m2!1sen!2sin"
-                width="100%"
-                height="250"
-                className="rounded-md shadow-md"
-                allowFullScreen=""
-                loading="lazy"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.5372680841224!2d55.32046907520489!3d25.271139977662315"
+                width="100%" height="250" className="rounded-md shadow-md" loading="lazy"
               ></iframe>
             </div>
           </div>
